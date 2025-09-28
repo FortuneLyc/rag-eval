@@ -1,0 +1,5 @@
+user_input,retrieved_contexts,response,reference,faithfulness,answer_relevancy,context_precision,context_recall,answer_correctness
+2023年第一季度的总销售额是多少？,['sales表包含日期(date)、产品(product)、销售额(amount)等字段。'],"-- 示例SQL查询
+SELECT * FROM table WHERE condition = 'value';",SELECT SUM(amount) FROM sales WHERE date BETWEEN '2023-01-01' AND '2023-03-31';,0.0,0.31854994267587805,0.9999999999,0.0,0.12992694413920694
+哪些产品的销售额超过1000元？,['products表包含产品ID(id)、产品名称(name)、类别(category)等字段。sales表包含产品ID(product_id)、销售额(amount)等字段。'],"-- 示例SQL查询
+SELECT * FROM table WHERE condition = 'value';",SELECT p.name FROM products p JOIN sales s ON p.id = s.product_id WHERE s.amount > 1000;,0.0,0.26569609775010555,0.9999999999,1.0,0.14720230940245194

@@ -1,0 +1,42 @@
+[
+    {
+        "question": "2023年第一季度的总销售额是多少？",
+        "context": "sales表包含日期(date)、产品(product)、销售额(amount)等字段。",
+        "ground_truth": "SELECT SUM(amount) FROM sales WHERE date BETWEEN '2023-01-01' AND '2023-03-31';"
+    },
+    {
+        "question": "哪些产品的销售额超过1000元？",
+        "context": "products表包含产品ID(id)、产品名称(name)、类别(category)等字段。sales表包含产品ID(product_id)、销售额(amount)等字段。",
+        "ground_truth": "SELECT p.name FROM products p JOIN sales s ON p.id = s.product_id WHERE s.amount > 1000;"
+    },
+    {
+        "question": "每个类别的产品数量是多少？",
+        "context": "products表包含产品ID(id)、产品名称(name)、类别(category)等字段。",
+        "ground_truth": "SELECT category, COUNT(*) as product_count FROM products GROUP BY category;"
+    },
+    {
+        "question": "2023年5月份的订单总数是多少？",
+        "context": "orders表包含订单ID(order_id)、订单日期(order_date)、客户ID(customer_id)等字段。",
+        "ground_truth": "SELECT COUNT(*) FROM orders WHERE order_date LIKE '2023-05-%';"
+    },
+    {
+        "question": "销售额最高的三个产品是什么？",
+        "context": "products表包含产品ID(id)、产品名称(name)等字段。sales表包含产品ID(product_id)、销售额(amount)等字段。",
+        "ground_truth": "SELECT p.name, SUM(s.amount) as total_sales FROM products p JOIN sales s ON p.id = s.product_id GROUP BY p.name ORDER BY total_sales DESC LIMIT 3;"
+    },
+    {
+        "question": "所有客户的平均订单金额是多少？",
+        "context": "customers表包含客户ID(id)、姓名(name)等字段。orders表包含订单ID(order_id)、客户ID(customer_id)、订单金额(amount)等字段。",
+        "ground_truth": "SELECT AVG(o.amount) FROM customers c JOIN orders o ON c.id = o.customer_id;"
+    },
+    {
+        "question": "库存数量低于50的产品有哪些？",
+        "context": "inventory表包含产品ID(product_id)、库存数量(quantity)等字段。products表包含产品ID(id)、产品名称(name)等字段。",
+        "ground_truth": "SELECT p.name FROM products p JOIN inventory i ON p.id = i.product_id WHERE i.quantity < 50;"
+    },
+    {
+        "question": "2023年上半年的总订单金额是多少？",
+        "context": "orders表包含订单日期(order_date)、订单金额(amount)等字段。",
+        "ground_truth": "SELECT SUM(amount) FROM orders WHERE order_date BETWEEN '2023-01-01' AND '2023-06-30';"
+    }
+]

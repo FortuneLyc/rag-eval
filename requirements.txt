@@ -1,0 +1,9 @@
+ragas
+pandas
+openai
+sqlalchemy
+psycopg2-binary
+matplotlib
+seaborn
+jupyter
+xinference

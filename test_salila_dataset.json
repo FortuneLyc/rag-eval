@@ -1,0 +1,12 @@
+[
+  {
+    "question": "2023年第一季度的总销售额是多少？",
+    "context": "sales表包含日期(date)、产品(product)、销售额(amount)等字段。",
+    "ground_truth": "SELECT SUM(amount) FROM sales WHERE date BETWEEN '2023-01-01' AND '2023-03-31';"
+  },
+  {
+    "question": "哪些产品的销售额超过1000元？",
+    "context": "products表包含产品ID(id)、产品名称(name)、类别(category)等字段。sales表包含产品ID(product_id)、销售额(amount)等字段。",
+    "ground_truth": "SELECT p.name FROM products p JOIN sales s ON p.id = s.product_id WHERE s.amount > 1000;"
+  }
+]
